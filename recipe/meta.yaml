@@ -10,16 +10,16 @@ source:
   sha256: 4ac4f1dff1e512b8a1d1e399cc45651a8bc35b8b18b84d6dcb71d007c6dcb1b3
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python >=3
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3
+    - python >={{ python_min }}
 
 test:
   imports:
@@ -28,6 +28,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/claudep/{{ name }}
